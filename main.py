@@ -183,3 +183,139 @@ print(my_list[-3:-1]) # prints elements from index -3 to -2
 print(my_list[::2]) # prints every second element of the list
 print(my_list[::-1]) # prints the list in reverse order
 
+# 13. Sets - unordered collection of unique elements - removes duplicates
+my_set = {1, 2, 3, 4, 5}
+x = set()   # creates an empty set 
+print(my_set)
+print(type(my_set))
+print(len(my_set)) # gives the number of unique elements in the set
+my_set.add(6) # adds an element to the set
+print(my_set)
+my_set.update([7, 8, 9]) # adds multiple elements to the set
+print(my_set)
+my_set.remove(3) # removes an element from the set (raises an error if the element is not found)
+print(my_set)
+my_set.discard(10) # removes an element from the set (does not raise an error if the element is not found)
+print(my_set)
+my_set.pop() # removes and returns an arbitrary element from the set
+print(my_set)
+my_set.clear() # removes all elements from the set
+print(my_set)
+print(1 in my_set) # checks if 1 is in the set
+print(my_set.union({10, 11, 12}))
+print(my_set.intersection({2, 4, 6, 8})) # gives the common elements between two sets
+print(my_set.difference({2, 4, 6, 8})) # gives the elements that are in my_set but not in the other set
+print(my_set.symmetric_difference({2, 4, 6, 8})) # gives the elements that are in either set
+
+# 14. Dictionaries - collection of key-value pairs
+my_dict = {"name": "Alice", "age": 25, "city": "New York"}
+print(my_dict)
+print(type(my_dict))
+print(len(my_dict)) # gives the number of key-value pairs in the dictionary
+print(my_dict["name"]) # accesses the value associated with the key "name"
+my_dict["age"] = 30 # updates the value associated with the key "age"
+print(my_dict)
+my_dict["country"] = "USA" # adds a new key-value pair to the dictionary
+print(my_dict)
+del my_dict["city"] # removes the key-value pair with the key "city"
+print(my_dict)
+print("name" in my_dict) # checks if the key "name" is in the dictionary
+print(my_dict.keys()) # gives a view of all the keys in the dictionary
+print(list(my_dict.keys())) # gives a list of all the keys in the dictionary
+print(my_dict.values()) # gives a view of all the values in the dictionary
+print(my_dict.items()) # gives a view of all the key-value pairs in the dictionary
+my_dict.clear() # removes all key-value pairs from the dictionary
+print(my_dict)
+
+# 15. Comprehensions - concise way to create lists, sets, or dictionaries
+# List comprehension
+squares = [x**2 for x in range(10)] # creates a list of squares of numbers from 0 to 9
+print(squares)
+even_squares = [x**2 for x in range(10) if x % 2 == 0] # creates a list of squares of even numbers from 0 to 9
+print(even_squares)
+# Set comprehension
+unique_squares = {x**2 for x in range(10)} # creates a set of squares of numbers from 0 to 9 (duplicates will be removed)
+print(unique_squares)
+# Dictionary comprehension
+square_dict = {x: x**2 for x in range(10)} # creates a dictionary where the keys are numbers from 0 to 9 and the values are their squares
+print(square_dict)
+even_square_dict = {x: x**2 for x in range(10) if x % 2 == 0} # creates a dictionary of squares of even numbers from 0 to 9
+print(even_square_dict)
+
+# 16. Functions - reusable blocks of code that perform a specific task
+def greet(name): # defines a function that takes a parameter "name"
+    return "Hello, " + name + "!" # returns a greeting message
+
+print(greet("Alice")) # calls the function with the argument "Alice"
+
+def add(a, b): # defines a function that takes two parameters "a" and "b"
+    return a + b # returns the sum of a and b
+
+print(add(5, 10)) # calls the function with the arguments 5 and 10
+
+def factorial(n): # defines a function that calculates the factorial of a number n
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1) # recursive call to calculate factorial
+print(factorial(5)) # calls the function with the argument 5
+
+def multiply(*args): # defines a function that takes a variable number of arguments
+    result = 1
+    for num in args:
+        result *= num # multiplies all the arguments together
+    return result
+print(multiply(2, 3, 4)) # calls the function with multiple arguments
+
+def func(x,y):
+    return x * y, x/y # returns multiple values as a tuple
+
+r1, r2 = func(10, 5) # unpacks the returned tuple into two variables
+print("Product:", r1)
+print("Quotient:", r2)
+
+def func(*args,**kwargs): # defines a function that takes variable number of positional and keyword arguments
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+    
+func(1, 2, 3, name="Alice", age=30) # calls the function with both positional and keyword arguments
+
+# 17. Scope and global variables
+x = 10 # global variable
+def func():
+    global x # declares that we want to use the global variable x
+    x = 20 # modifies the global variable x
+    print("Inside function, x =", x)
+func() # calls the function
+print("Outside function, x =", x) # prints the modified global variable x
+
+# 18. Raise and try-except blocks - used for error handling
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero") # raises an exception if b is zero
+    return a / b
+try:    result = divide(10, 0) # attempts to divide by zero
+except ValueError as e: # catches the ValueError exception
+    print("Error:", e) # prints the error message
+finally:    print("This block will always execute") # this block will execute regardless of whether an exception was raised or not
+
+# 19. Lambda functions - anonymous functions defined with the lambda keyword
+square = lambda x: x**2 # defines a lambda function that takes one argument and returns its square
+print(square(5)) # calls the lambda function with the argument 5
+
+# 20. Map, filter, and reduce - higher-order functions for functional programming
+from functools import reduce
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers)) # applies the lambda function to each element in the list and returns a new list of squared numbers
+print(squared)
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers)) # filters the list to include only even numbers
+print(even_numbers)
+product = reduce(lambda x, y: x * y, numbers) # reduces the list to a single value by applying the lambda function cumulatively to the items in the list
+print(product)
+
+# 21. F strings - formatted string literals for easier string formatting
+name = "Alice"
+age = 30
+greeting = f"Hello, my name is {name} and I am {age} years old." # uses f-string to format the string with variables
+print(greeting)
+
