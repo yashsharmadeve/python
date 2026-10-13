@@ -5,6 +5,14 @@ name = "John Doe"
 print(name)
 print(type(name))
 
+# multiline String
+multiLine = """ 
+Yash SHarma 
+is a 
+nice guy
+"""
+print(multiLine)
+
 # Integer
 age = 30
 print(age)
@@ -14,6 +22,11 @@ print(type(age))
 height = 5.9
 print(height)
 print(type(height))
+
+# complex Number 
+complexNum = 5 + 2j
+print(complexNum)
+print(type(complexNum))
 
 # Booleanis_student = True
 is_student = True
