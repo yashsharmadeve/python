@@ -135,3 +135,23 @@ for i in myList:
             secondCount = i
 
 print(secondCount)
+#newList = [-5, -4 -3, -2, -1] ## from negative perspective 
+newList = [10, 20, 30, 40, 50]
+#slicing - myList[start:end:step]
+print(newList[0:len(newList):2])
+print(newList[::]) # return all
+print(newList[::2]) # step to 2
+print(newList[1::2]) # start from 1 and step to 2
+print(newList[-4:-1]) # return 20 30 40 - from -4 to -1
+print(newList[::-1]) ## reverse and array
+
+# list comprehension 
+# assign value to list 
+# what it do is iterate the array and store in list
+newMylist = [ele for ele in range(len(myList))] # output - [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+# newMylist = [ele*2+1 for ele in range(len(myList))] - 
+print(newMylist)
+
+getList = [int(ele) for ele in input().split()] # what it do is iterate the array and get input from user and store in list
+print(getList)
+
